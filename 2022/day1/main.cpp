@@ -7,8 +7,8 @@
 #include "../utils/file.h"
 
 int main(){
-    std::cout << "Hello World" << std::endl;
-    auto lines = FileHandler::read_file("../input.txt");
+    std::cout << "Day 1!" << std::endl;
+    auto lines = FileHandler::read_file("../day1/input.txt");
     
     int currentCalories = 0;
     std::vector<int> elvesCalories;
