@@ -7,7 +7,7 @@
 #include <set>
 
 #include "../utils/file.h"
-#include "../utils/string.h"
+#include "../utils/string_helper.h"
 
 static std::map<char, int> priority;
 

@@ -3,7 +3,7 @@
 #include <ostream>
 #include <stdexcept>
 #include "../utils/file.h"
-#include "../utils/string.h"
+#include "../utils/string_helper.h"
 
 #include "action.h"
 #include "rock.h"
