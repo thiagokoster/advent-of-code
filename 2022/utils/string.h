@@ -1,4 +1,5 @@
 #include <iterator>
+#include <set>
 #include <string>
 #include <vector>
 
@@ -27,6 +28,17 @@ public:
         }
         out.push_back(buffer);
         return out; 
-    }
+    };
 
+    static std::set<char> to_set(const std::string& str)
+    {
+        std::set<char> out;
+
+        for(char c : str)
+        {
+            out.insert(c);
+        }
+
+        return out;
+    };
 };
