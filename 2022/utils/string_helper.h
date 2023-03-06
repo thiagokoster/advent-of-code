@@ -58,4 +58,16 @@ public:
 
         return out;
     };
+
+    static bool unique(const std::string& str)
+    {
+        std::set<char> char_set;
+
+        for(char c : str)
+        {
+            char_set.insert(c);
+        }
+
+        return char_set.size() == str.size();
+    }
 };
