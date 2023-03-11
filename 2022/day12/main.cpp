@@ -48,12 +48,12 @@ struct Cell
     }
 };
 
-    void run(std::vector<std::vector<Cell>>& grid, int er, int ec, int sr, int sc)
+    void run(std::vector<std::vector<Cell>>& grid, int er, int ec)
     {
         std::queue<Cell> q;
         std::set<Cell> visited;
-        q.push(grid[sr][sc]);
-        visited.insert(grid[sr][sr]);
+        q.push(grid[er][ec]);
+        visited.insert(grid[er][ec]);
         while(!q.empty())
         {
             auto current = q.front();
@@ -66,11 +66,11 @@ struct Cell
                     continue;
                 }
 
-                if((grid[nCord.first][nCord.second].label - '0') - (grid[current.row][current.col].label - '0') > 1)
+                if((grid[nCord.first][nCord.second].label - '0') - (grid[current.row][current.col].label - '0') < -1)
                 {
                     continue;
                 }
-                if( nCord.first == er && nCord.second == ec)
+                if(grid[nCord.first][nCord.second].label == 'a')
                 {
                     std::cout << nCord.first << " " << nCord.second << std::endl;
                     std::cout << current.dist + 1 << std::endl;
@@ -92,7 +92,7 @@ int main()
     std::cout << "Day 12!" << std::endl;
     std::vector<std::vector<Cell>> grid;
     auto lines = FileHandler::read_file("../day12/input.txt");
-    int sr, sc, er, ec;
+    int er, ec;
     int id = 0;
     int row = 0;
     for(auto line : lines)
@@ -102,8 +102,6 @@ int main()
         {
             if (line[column] == 'S')
             {
-                sr = row;
-                sc = column;
                 grid[row].push_back(Cell{id, 'a', 0, row, column});
             }
             else if(line[column] == 'E')
@@ -121,7 +119,7 @@ int main()
         ++row;
     }
 
-    run(grid, er, ec, sr, sc);
+    run(grid, er, ec);
 
     for(int i = 0; i < grid.size(); ++i)
     {
